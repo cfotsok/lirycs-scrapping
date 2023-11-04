@@ -14,12 +14,12 @@ def extract_lyrics(url: str):
     lyrics = [item.stripped_strings for item in lyrics]
 
     lyrics = [[elt.split() for elt in item] for item in lyrics]
-    words = []
+    all_words = []
     for elt in lyrics:
         for sentence in elt:
-            words.extend(sentence)
+            all_words.extend([word.strip(",").strip(".") for word in sentence if len(word) > 2])
 
-    pprint(words)
+    pprint(all_words)
 
 
 def get_all_urls():
